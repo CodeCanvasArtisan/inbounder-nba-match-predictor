@@ -19,7 +19,7 @@ Predicts NBA game outcomes using a neural network. Pick two teams and a date —
 |---|---|
 | ML | PyTorch |
 | API | FastAPI + Uvicorn |
-| Data | nba_api, balldontlie.io, pandas |
+| Data | nba_api, pandas |
 | Frontend | TBD |
 
 ---
