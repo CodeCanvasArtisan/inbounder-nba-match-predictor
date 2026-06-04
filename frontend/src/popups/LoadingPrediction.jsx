@@ -1,4 +1,3 @@
-
-export function TeamSelection() {
+export function LoadingPrediction() {
     
 }
