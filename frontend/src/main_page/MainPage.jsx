@@ -4,6 +4,7 @@ import styles from "./main_page.module.css"
 import NBALogo from "../assets/nba_logo.png";
 import { ButtonPrimary } from "../global_components/Buttons";
 import { Footer } from "./Footer";
+import { ParameterSelectionPill } from "./parameter_selection/ParameterSection";
 
 export function MainPage() {
     return (
@@ -19,7 +20,8 @@ export function MainPage() {
             </header>
 
             <section className={styles.parameters_section}>
-                
+                <ParameterSelectionPill/>
+                <ParameterSelectionPill/>
             </section>
 
             <section className={styles.submit_section}>

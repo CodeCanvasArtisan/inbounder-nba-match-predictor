@@ -11,15 +11,17 @@
 
   /* App background */
   --navy-primary:            #1C51B9;
+  --off-white : #FBFBFB;
 
   /* Parameter cards 
   --parameter-card-bg : #002A7D;;
   --parameter-card-border : #A9C6FF;
 
   /* Popups */
-  --color-popup-bg:          #1A2E8C;   /* Teams popup + Predicting/Results popups */
+  --color-popup-bg:          #002A7D;   /* Teams popup + Predicting/Results popups */
   --color-popup-item-hover:  #223BB0;   /* Hover state for list items */
-  --color-popup-item-active: #2A50C8;   /* Selected/active list item */
+  --color-popup-item-active: #2A50C8;
+  --color-popup-border : #A9C6FF80;   /* Selected/active list item */
 
   /* Accents */
   --color-accent-red:        #FF002D;   /* CTA button, step-number badge */
