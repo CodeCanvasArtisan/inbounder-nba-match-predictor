@@ -1,17 +1,17 @@
 import "react"
 import styles from "./parameter_selection.module.css";
+import { MatchupSelection } from "./MatchupSelection.jsx";
 
-export function ParameterSelectionPill() {
+export function ParameterSelectionPill({stepNo, paramName, mainContent}) {
  // step number + main content
  return (
     <div className={styles.parameter_pill_container}>
          <header>
-            <StepCircle number={1}/>
-            Parameter
+            <StepCircle number={stepNo}/>
+            {paramName}
          </header>
-         <main>
-            main content
-         </main>
+
+         {mainContent}
     </div>
  )
 }
@@ -20,11 +20,7 @@ function StepCircle({number}) {
    return <div className={styles.step_circle}>{number}</div>
 }
 
-// --------------------------
-// Main content for each pill
-function MatchupSelection() {
 
-}
 
 function GameDateSelection() {
 

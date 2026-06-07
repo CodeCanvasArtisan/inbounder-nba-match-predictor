@@ -2,10 +2,11 @@ export const nbaTeams = [
   // Empty state
   {
     fullName: "Choose team",
-    shortenedName: null,
-    abbreviation: null,
-    accentColour: "linear-gradient(135deg, #DDDDDD, #E6E6E6)",
+    shortenedName: "",
+    abbreviation: "",
+    accentColour: "linear-gradient( #DDDDDD, #E6E6E6, to right)",
     secondaryColour: "rgba(0, 0, 0, 0.5)",
+
   },
 
   // Atlantic
@@ -50,6 +51,12 @@ export const nbaTeams = [
   { fullName: "New Orleans Pelicans",   shortenedName: "Pelicans",      abbreviation: "NOP", accentColour: "#0C2340", secondaryColour: "#C8A956" },
   { fullName: "San Antonio Spurs",      shortenedName: "Spurs",         abbreviation: "SAS", accentColour: "#000000", secondaryColour: "#C4CED4" },
 ];
+
+export function getTeamFromAbbrev(abbrev) {
+  if (abbrev == null) return nbaTeams[0];
+
+  return nbaTeams.find(team => team.abbreviation == abbrev) ?? null;
+}
 
 export const shiftingCopy = [
   "Looking at season win percentages",
