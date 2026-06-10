@@ -1,0 +1,145 @@
+/* 
+-----------------
+BLUR + DIVIDER LINE ------------
+*/
+.blur_overlay {
+    width : 110vw; height : 110vh;
+    position : fixed; top : 0; left: 0;
+
+    backdrop-filter : blur(5px) brightness(0.5);
+    z-index : 10;
+
+}
+.divider_line {
+    height : 2px;
+    width : 60%;
+    background : #fbfbfb;
+}   
+
+/* 
+-----------------
+POPUP CONTAINER ------------
+*/
+.popup_wrapper {
+    display: flex;              /* ← missing */
+    flex-direction: column;     /* ← missing */
+
+    padding: 1.5em;
+    min-height: 30vh;
+    max-height: 70vh;
+    width : 45vw;
+    overflow: hidden;
+
+    padding : 1.5em;
+
+    background : var(--color-popup-bg);
+    border-radius : 40px; border : solid #FBFBFB80 1px;
+    box-shadow: 0 0 10px 2px rgb(0,0,0,0.5);
+    position : absolute;
+
+    top : 50%; left: 50%;
+    transform : translate(-50%, -50%);
+
+    z-index : 11;
+}
+
+.popup_container {
+    flex: 1;
+    width : 100%;
+    min-height: 0;      
+    position : relative;
+    
+    display: flex; justify-content: center; align-items: center; flex-direction : column;
+    gap : 30px;
+}
+.popup_container h1 {font-size : var(--font-size-3xl);}
+
+.popup_container > main {
+    width : 100%;
+    flex: 1;
+    min-height: 0; 
+
+    display: flex; justify-content: center; align-items: center; flex-direction : column;
+    gap : 15px;
+}
+.popup_container > main > * {border-radius : 20px;}
+
+
+/* 
+-------------------------
+CLOSE BUTTON ------------
+*/
+.close_btn {
+    position : absolute;
+    right: 0; top: 0;
+
+    background : none;
+
+    filter :invert(1);
+}
+.close_btn img {width : 1.5em;}
+
+/* 
+-------------------------
+TEAM SELECTION ----------
+*/
+
+.search_bar_container {
+    width : 100%;
+    height : 15%;
+    padding : 10px;
+
+    display: flex; justify-content: left; align-items: center;
+    gap : 10px;
+    background : var(--color-popup-secondary-bg);
+    border : solid rgb(0,0,0,0) 1px;
+    transition : all 0.2s ease;
+}
+.search_bar_container input {
+    height : 100%;
+    width : 100%;
+    font-size : var(--font-size-xl);
+    color : #FBFBFB80;
+    background : none; outline : none;border : none;
+}
+.search_bar_container.active {
+    border : solid var(--color-accent-red) 1px;
+}
+.search_bar_container input::placeholder {
+    color : #FBFBFB80;
+}
+
+.search_results_section_container {
+    width : 100%;
+    flex: 1;
+    min-height: 0;
+    display: flex; justify-content: center; align-items: center; flex-direction : column;
+    gap : 10px;
+    background : var(--color-popup-secondary-bg);
+}
+.search_results_section_container > *:not(.divider_line){
+    padding : 10px;
+    width : 100%;
+}
+.search_results_container {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+
+    display: flex; justify-content: flex-start; align-items: center; flex-direction : column;
+    gap : 5px;
+}
+
+
+.team_card {
+    background : var(--color-popup-tertiary-bg);
+    display: flex; justify-content: left; align-items: center;
+    gap : 20px;
+    padding : 0px 10px;
+    font-weight :bold; font-size : var(--font-size-xl);
+    width : 100%;
+    border-radius : 10px;
+    height : fit-content;
+}
+
+

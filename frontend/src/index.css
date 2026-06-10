@@ -22,7 +22,8 @@
   --color-popup-item-hover:  #223BB0;   /* Hover state for list items */
   --color-popup-item-active: #2A50C8;
   --color-popup-border : #A9C6FF80;   /* Selected/active list item */
-
+  --color-popup-secondary-bg : #001746;
+  --color-popup-tertiary-bg : #002161;
   /* Accents */
   --color-accent-red:        #FF002D;   /* CTA button, step-number badge */
   --color-accent-red-hover:  #D01F24;

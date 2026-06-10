@@ -31,7 +31,7 @@ export function MatchupSelection({homeConfig, awayConfig}) {
 import basketballIcon from "/src/assets/icons/basketball.svg";
 import * as NBALogos from "react-nba-logos"
 
-function TeamSelectionArea({teamObj, isHome}) {
+export function TeamSelectionArea({teamObj, isHome}) {
 
     const Logo = teamObj ? (NBALogos[teamObj.abbreviation] ?? null) : null;
     console.log("team -> ", teamObj);

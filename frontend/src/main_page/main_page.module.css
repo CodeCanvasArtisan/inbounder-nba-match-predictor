@@ -39,7 +39,7 @@ HEADER -------------------------
 .main_heading {
     height : 60%;
     display: flex; justify-content: center; align-items: center; gap : 30px;
-    font-size : var(--font-size-2xl)
+    font-size : var(--font-size-3xl)
 }
 .main_heading > img {
     height : 100%;

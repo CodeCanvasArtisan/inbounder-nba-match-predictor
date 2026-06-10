@@ -10,6 +10,8 @@ import { Footer } from "./Footer";
 import { ParameterSelectionPill } from "./parameter_selection/ParameterSection";
 import { MatchupSelection } from "./parameter_selection/MatchupSelection";
 import { GameDateSelection } from "./parameter_selection/GameDateSelection";
+import { BlurOverlay, Popup } from "../popups/Popup";
+import { TeamSelection } from "../popups/TeamSelection";
 
 export function MainPage() {
 
@@ -61,7 +63,11 @@ export function MainPage() {
                 <Footer/>
             </section>
 
-
+            <Popup 
+                headingCopy="Select Home Team" 
+                mainContent={<TeamSelection/>}
+            />
+            <BlurOverlay/>
         </div>
     )
 }
