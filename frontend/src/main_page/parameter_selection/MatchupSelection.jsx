@@ -1,23 +1,27 @@
 import styles from "./parameter_selection.module.css";
 import { getTeamFromAbbrev } from "../../constants";
-export function MatchupSelection() {
+export function MatchupSelection({homeConfig, awayConfig}) {
+
+    const {variable : homeTeam, setter : setHomeTeam} = homeConfig;
+    const {variable : awayTeam, setter : awayTeamTeam} = awayConfig;
+    
     return (
         <main className={styles.matchup_selection_container}>
             <div className={styles.top_row}>
                 <p>HOME</p>
                 <p style={{color : "rgb(0,0,0,0)", paddingLeft : "0"}}>a</p>
-                <p>AWAY</p>
+                <p style={{paddingLeft : "2em"}}>AWAY</p>
             </div>
             <div className={styles.team_cards_container}>
                 <TeamSelectionArea
-                    teamObj={getTeamFromAbbrev(null)}
+                    teamObj={getTeamFromAbbrev(awayTeam)}
                 />
                 <p style={{
                     color : "#FBFBFB80"
                 }}>@</p>
 
                 <TeamSelectionArea
-                    teamObj={getTeamFromAbbrev("MIN")}
+                    teamObj={getTeamFromAbbrev(homeTeam)}
                 />
             </div>
         </main>

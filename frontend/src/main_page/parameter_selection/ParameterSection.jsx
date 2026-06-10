@@ -19,9 +19,3 @@ export function ParameterSelectionPill({stepNo, paramName, mainContent}) {
 function StepCircle({number}) {
    return <div className={styles.step_circle}>{number}</div>
 }
-
-
-
-function GameDateSelection() {
-
-}

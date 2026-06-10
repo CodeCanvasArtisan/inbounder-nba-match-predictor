@@ -1,14 +1,17 @@
 import styles from "./parameter_selection.module.css";
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
-export function GameDateSelection() {
+export function GameDateSelection({stateConfig}) {
 
-    const [daysFromNow, setDaysFromNow] = useState(1);
+    const {variable : daysFromNow, setter : setDaysFromNow} = stateConfig;
     const [inXDays, setInXDays] = useState(2);
     const [selectionBoxInfo, setSelectionBoxInfo] = useState({x : 0, y : 0, width : 0, height : 0})
 
+    
+    
     const updateCustomDate = useEffect(() => setDaysFromNow(inXDays), [inXDays])
 
     const changeSelectionBoxPosition = (moveToRef, containerRef) => {
+        if(!inXDays) return;
         const elem = moveToRef.current;
         setSelectionBoxInfo({
             left: elem.offsetLeft,
@@ -64,7 +67,7 @@ function DateOption({changeSelectionBox, option, select, isSelected, inXDaysConf
 import plusIcon from "/src/assets/icons/plus_circle.svg";
 import minusIcon from "/src/assets/icons/minus_circle.svg";
 
-function InXDaysOption({stateConfig}) {
+function InXDaysOption({stateConfig, isSelected}) {
 
     const {variable : numDays, setter : setNumDays} = stateConfig;
 
@@ -72,20 +75,16 @@ function InXDaysOption({stateConfig}) {
         <div className={styles.inxdays_wrapper}>
             <h2>In</h2>
             <span>
-                <button disabled = {numDays <= 1} onClick={() => {
+                <button disabled = {!isSelected} onClick={() => {
                     if (numDays <= 2) setNumDays(2)
                     else setNumDays(curr => curr - 1)
                 }}><img src={minusIcon}/></button>
-                <input min={2} max={7} 
+                <input min={2} max={7} disabled
                     onChange={e => {
                         setNumDays(e.target.value)
-                    }} value={numDays}
-                    onBlur={() => {
-                        if(numDays > 7) setNumDays(7)
-                        else if (numDays > 2 || !numDays) setNumDays(2)
-                    }}  
+                    }} value={numDays} 
                     />
-                <button disabled = {numDays <= 1}
+                <button disabled = {!isSelected}
                 onClick={() => {
                     if (numDays >= 7) setNumDays(7)
                     else setNumDays(curr => curr + 1)}
