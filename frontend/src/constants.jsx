@@ -13,7 +13,7 @@ export const nbaTeams = [
   { fullName: "Boston Celtics",         shortenedName: "Celtics",       abbreviation: "BOS", accentColour: "#007A33", secondaryColour: "#FFFFFF" },
   { fullName: "Brooklyn Nets",          shortenedName: "Nets",          abbreviation: "BKN", accentColour: "#000000", secondaryColour: "#FFFFFF" },
   { fullName: "New York Knicks",        shortenedName: "Knicks",        abbreviation: "NYK", accentColour: "#006BB6", secondaryColour: "#F58426" },
-  { fullName: "Philadelphia 76ers",     shortenedName: "76ers",         abbreviation: "PHI", accentColour: "#006BB6", secondaryColour: "#ED174C" },
+  { fullName: "Philadelphia 76ers",     shortenedName: "76ers",         abbreviation: "PHI", accentColour: "#00487b", secondaryColour: "#ED174C" },
   { fullName: "Toronto Raptors",        shortenedName: "Raptors",       abbreviation: "TOR", accentColour: "#CE1141", secondaryColour: "#000000" },
 
   // Central

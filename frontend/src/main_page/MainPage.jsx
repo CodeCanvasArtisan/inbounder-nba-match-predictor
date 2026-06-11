@@ -16,10 +16,14 @@ import { TeamSelection } from "../popups/TeamSelection";
 export function MainPage() {
 
     const [daysFromNow, setDaysFromNow] = useState(1);
-    const [homeTeam, setHomeTeam] = useState("WAS");
-    const [awayTeam, setAwayTeam] = useState("ATL");
+    const [homeTeam, setHomeTeam] = useState("");
+    const [awayTeam, setAwayTeam] = useState("");
 
-
+    const [popupsOpenState, setPopupsOpenState] = useState({
+        homeTeam : false,
+        awayTeam : false
+    })
+   
 
     return (
         <div className={styles.page_container}>
@@ -40,6 +44,9 @@ export function MainPage() {
                     mainContent={<MatchupSelection 
                         homeConfig={{variable : homeTeam, setter : setHomeTeam}}
                         awayConfig={{variable : awayTeam, setter : setAwayTeam}}
+                        openHomePopup={() => setPopupsOpenState(curr => ({...curr, homeTeam: true}))}
+                        openAwayPopup={() => setPopupsOpenState(curr => ({...curr, awayTeam: true}))}
+
                     />}
                 />
                 <ParameterSelectionPill 
@@ -64,10 +71,20 @@ export function MainPage() {
             </section>
 
             <Popup 
-                headingCopy="Select Home Team" 
-                mainContent={<TeamSelection/>}
+                headingCopy="Select Away Team" 
+                mainContent={<TeamSelection excludedTeams={[homeTeam, awayTeam, ""]} closePopup={() => setPopupsOpenState(curr => ({...curr, awayTeam: false}))} stateConfig={{variable : awayTeam, setter : setAwayTeam}}/>}
+                isOpen={popupsOpenState.awayTeam}
+                close={() => {setPopupsOpenState(curr => ({...curr, awayTeam: false}))}}
+                
             />
-            <BlurOverlay/>
+            <Popup 
+                headingCopy="Select Home Team" 
+                mainContent={<TeamSelection excludedTeams={[awayTeam, homeTeam, ""]} closePopup={() => setPopupsOpenState(curr => ({...curr, homeTeam: false}))} stateConfig={{variable : homeTeam, setter : setHomeTeam}}/>}
+                isOpen={popupsOpenState.homeTeam}
+                close={() => setPopupsOpenState(curr => ({...curr, homeTeam: false}))}
+                
+            />
+            <BlurOverlay onClick={() => setPopupsOpenState({homeTeam: false, awayTeam: false})}  isPopupOpen={Object.values(popupsOpenState).some(value => value === true)}/>
         </div>
     )
 }

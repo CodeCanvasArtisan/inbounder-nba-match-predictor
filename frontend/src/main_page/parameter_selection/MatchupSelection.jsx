@@ -1,6 +1,6 @@
 import styles from "./parameter_selection.module.css";
 import { getTeamFromAbbrev } from "../../constants";
-export function MatchupSelection({homeConfig, awayConfig}) {
+export function MatchupSelection({homeConfig, awayConfig, openAwayPopup, openHomePopup}) {
 
     const {variable : homeTeam, setter : setHomeTeam} = homeConfig;
     const {variable : awayTeam, setter : awayTeamTeam} = awayConfig;
@@ -8,12 +8,13 @@ export function MatchupSelection({homeConfig, awayConfig}) {
     return (
         <main className={styles.matchup_selection_container}>
             <div className={styles.top_row}>
-                <p>HOME</p>
+                <p>AWAY</p>
                 <p style={{color : "rgb(0,0,0,0)", paddingLeft : "0"}}>a</p>
-                <p style={{paddingLeft : "2em"}}>AWAY</p>
+                <p style={{paddingLeft : "2em"}}>HOME</p>
             </div>
             <div className={styles.team_cards_container}>
                 <TeamSelectionArea
+                    onClick={openAwayPopup}
                     teamObj={getTeamFromAbbrev(awayTeam)}
                 />
                 <p style={{
@@ -21,6 +22,7 @@ export function MatchupSelection({homeConfig, awayConfig}) {
                 }}>@</p>
 
                 <TeamSelectionArea
+                    onClick={openHomePopup}
                     teamObj={getTeamFromAbbrev(homeTeam)}
                 />
             </div>
@@ -31,12 +33,13 @@ export function MatchupSelection({homeConfig, awayConfig}) {
 import basketballIcon from "/src/assets/icons/basketball.svg";
 import * as NBALogos from "react-nba-logos"
 
-export function TeamSelectionArea({teamObj, isHome}) {
+export function TeamSelectionArea({teamObj, isHome, onClick}) {
 
     const Logo = teamObj ? (NBALogos[teamObj.abbreviation] ?? null) : null;
     console.log("team -> ", teamObj);
     return (
         <button 
+            onClick={onClick}
             className={styles.team_selection_container}
             style = {{
                 background : teamObj.accentColour,
