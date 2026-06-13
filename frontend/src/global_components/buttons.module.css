@@ -1,0 +1,36 @@
+.button_primary {
+    background : var(--color-accent-red);
+    height : 60px;
+    width : 100%;
+    color : var(--color-text-primary);
+    font-size : var(--font-size-3xl);
+    border-radius : var(--radius-xl);
+
+    padding : 10px;
+}
+
+.button_primary:hover {
+    transform : translateY(-5%);
+}
+
+.button_primary:active {
+    transform : translateY(-5%) scale(0.98);
+}
+
+.button_primary img {
+    height : 3cqi !important;
+}
+
+/* Action link */
+.action_link {
+    font-size : var(--font-size-md);
+    color : #FBFBFBB3;
+
+    text-decoration : underline;
+    transition : all 0.2s ease;
+
+    width : fit-content;
+    padding : 2px 5px;
+    border-radius : 10px;
+}
+.action_link:hover {cursor : pointer; backdrop-filter : brightness(0.8);}
