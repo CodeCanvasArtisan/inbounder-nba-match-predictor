@@ -13,5 +13,5 @@ export function ButtonPrimary({copy, onClick}) {
 }
 
 export function ActionLink({copy, onClick}) {
-    
+    return <p className={styles.action_link} onClick={onClick}>{copy}</p>
 }

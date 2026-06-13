@@ -52,8 +52,8 @@ POPUP CONTAINER ------------
     opacity : 0;
     transform : translate(-50%, -50%) scale(0.9);
     pointer-events : none;
-
 }
+.popup_wrapper.inactive * {pointer-events : none;}
 
 .popup_container {
     flex: 1;
@@ -63,6 +63,8 @@ POPUP CONTAINER ------------
     
     display: flex; justify-content: center; align-items: center; flex-direction : column;
     gap : 30px;
+
+    transition : all0.2s ease;
 }
 .popup_container h1 {font-size : var(--font-size-3xl);}
 
@@ -72,10 +74,16 @@ POPUP CONTAINER ------------
     min-height: 0; 
 
     display: flex; justify-content: center; align-items: center; flex-direction : column;
-    gap : 15px;
+
+    /* styles for loading / showing prediction transitions */
+    opacity : 1;
+    pointer-events : auto;
+    transform : scale(1);
+
+    transition : all 0.2s ease;
 }
 .popup_container > main > * {border-radius : 20px;}
-
+.popup_container > main:not(.result_display_container) {gap : 15px;}
 
 /* 
 -------------------------
@@ -176,11 +184,55 @@ LOADING PREDICTION ----------
     display: flex; justify-content: center; align-items: center;
 }
 .changing {
-    animation : copyChangeover 0.2s linear;
+    animation : popChangeover 0.2s linear;
 }
-@keyframes copyChangeover {
+@keyframes popChangeover {
     0% {transform : scale(1); opacity : 1;}
     50% {transform : scale(0.9); opacity : 0;}
     100% {transform : scale(1); opacity : 1;}
 }
 
+/* 
+-------------------------
+RESULT DISPLAY ----------
+*/
+.result_display_container {
+    justify-content : flex-start;
+    text-align : center;
+    gap : 40px;
+}
+.result_display_container section {
+    display: flex; justify-content: center; align-items: center; flex-direction : column;
+}
+.info_section {gap : 5px;}
+
+.result_display_container img{
+    height : 3em;
+}
+.result_display_container h1 {
+    font-size : 3em;
+}
+.result_display_container h2 {
+    font-size : var(--font-size-3xl);
+    font-weight : normal;
+}
+.result_display_container p {
+    font-size : var(--font-size-xl);
+}
+
+.button_section {
+    gap : 5px;
+    width :fit-content;
+    min-width : 50%;
+}
+
+/* 
+-----------------------------------------------------------------
+TRANSITIONING BETWEEN LOADING AND REVEALING PREDICTION ----------
+*/
+.popup_container > main.inactive {
+    opacity : 0 !important;
+    pointer-events : none !important;
+    transform : scale(0.9) !important;
+    position : absolute !important;
+}

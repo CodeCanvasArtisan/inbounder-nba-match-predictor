@@ -5,7 +5,7 @@ import {useState, useEffect} from "react";
 import { shiftingCopy } from "../constants";
 import { BouncingBasketball } from "../assets/bouncing_basketball/BouncingBasketball";
 
-export function LoadingPrediction() {
+export function LoadingPrediction({isActive}) {
 
     const [isCopyChanging, setIsCopyChanging] = useState(false);
     const [currCopy, setCurrCopy] = useState(shiftingCopy[0]);
@@ -36,7 +36,7 @@ export function LoadingPrediction() {
 
  
     return (
-        <main className={styles.loading_prediction_container}>
+        <main className={`${!isActive ? styles.inactive : ""} ${styles.loading_prediction_container}`}>
 
             <BouncingBasketball/>
 
