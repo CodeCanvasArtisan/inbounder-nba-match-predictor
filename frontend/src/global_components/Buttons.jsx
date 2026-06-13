@@ -1,10 +1,9 @@
 import 'react';
 
 import styles from "./buttons.module.css";
-export function ButtonPrimary({copy, onClick, isDisabled}) {
+export function ButtonPrimary({copy, onClick}) {
     return (
         <button 
-            disabled={isDisabled}
             onClick={() => onClick()}
             className = {styles.button_primary}
         >

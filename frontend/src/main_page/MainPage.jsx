@@ -90,7 +90,6 @@ export function MainPage() {
                     `)
                     predict()
                 }}
-                isDisabled={!homeTeam || !awayTeam}
                 copy="Play it out"/>
             </section>
 
@@ -109,8 +108,7 @@ export function MainPage() {
                 headingCopy="Select Home Team" 
                 mainContent={<TeamSelection excludedTeams={[awayTeam, homeTeam, ""]} closePopup={() => setPopupsOpenState(curr => ({...curr, homeTeam: false}))} stateConfig={{variable : homeTeam, setter : setHomeTeam}}/>}
                 isOpen={popupsOpenState.homeTeam}
-                close={() => setPopupsOpenState(curr => ({...curr, homeTeam: false}))}
-                
+                close={() => setPopupsOpenState(curr => ({...curr, homeTeam: false}))}          
             />
             <Popup
                 mainContent={<>
