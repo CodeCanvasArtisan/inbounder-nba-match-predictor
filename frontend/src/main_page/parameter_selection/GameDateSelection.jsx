@@ -9,6 +9,7 @@ export function GameDateSelection({stateConfig}) {
     
     
     const updateCustomDate = useEffect(() => setDaysFromNow(inXDays), [inXDays])
+    useEffect(() => setDaysFromNow(0), []);
 
     const changeSelectionBoxPosition = (moveToRef, containerRef) => {
         if(!inXDays) return;
