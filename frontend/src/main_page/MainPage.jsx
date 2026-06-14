@@ -49,6 +49,8 @@ export function MainPage() {
     }   
 
     return (
+        <>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         <div className={styles.page_container}>
             <header className={styles.page_header}>
                 <div className={styles.main_heading}>
@@ -132,5 +134,6 @@ export function MainPage() {
             />
             <BlurOverlay onClick={() => setPopupsOpenState(curr => ({...curr, homeTeam: false, awayTeam: false}))}  isPopupOpen={Object.values(popupsOpenState).some(value => value === true)}/>
         </div>
+        </>
     )
 }

@@ -238,3 +238,30 @@ TRANSITIONING BETWEEN LOADING AND REVEALING PREDICTION ----------
     transform : scale(0.9) !important;
     position : absolute !important;
 }
+
+
+/* 
+--------------------------------
+MOBILE STYLES --------------
+*/
+@media (max-width: 768px) {
+    .popup_wrapper {
+        width: 93vw;
+        max-height: 82vh;
+        border-radius: 24px;
+        padding: 1em;
+    }
+
+    .team_card { 
+        font-size: var(--font-size-base); gap: 10px;
+
+        padding : 10px 5px !important;
+
+    }
+
+    .prediction_copy_container { font-size: var(--font-size-lg); }
+
+    .result_display_container {gap : 20px;}
+    .result_display_container h1 { font-size: 2em; }
+    .result_display_container h2 { font-size: var(--font-size-2xl); }
+}
