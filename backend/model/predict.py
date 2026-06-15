@@ -1,7 +1,9 @@
 import torch, pickle
 import pandas as pd
 import numpy as np
+
 from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent
 
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -23,14 +25,18 @@ def load_game_logs(path):
 
 
 def load_model():
-    with open('/model/scaler.pkl', 'rb') as f:
+    scaler_path = BASE_DIR / 'scaler.pkl'
+    model_path = BASE_DIR / 'nba_match_predictor_model.pt'
+    team_to_index_path = BASE_DIR / 'team_to_index.pkl'
+
+    with open(scaler_path, 'rb') as f:
         scaler = pickle.load(f)
 
-    with open('/model/team_to_index.pkl', 'rb') as f:
+    with open(team_to_index_path, 'rb') as f:
         team_to_index = pickle.load(f)
 
     model = NBAPredictorModel()
-    model.load_state_dict(torch.load('/model/nba_match_predictor_model.pt'))
+    model.load_state_dict(torch.load(model_path))
     model.eval()
 
     print("good to go")
@@ -39,7 +45,8 @@ def load_model():
 
 def startup():
 
-    cache_path = Path('/game_logs.pkl')
+    cache_path = BASE_DIR / '/game_logs.pkl'
+    
 
     if cache_path.is_file():
         game_logs = load_game_logs(cache_path)
