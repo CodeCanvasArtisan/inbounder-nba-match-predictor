@@ -13,8 +13,8 @@ import pandas as pd
 
 from contextlib import asynccontextmanager
 
-import backend.model.predict as Prediction
-from backend.training_data.training_data_utils import abbrev_to_team_id
+import model.predict as Prediction
+from training_data.training_data_utils import abbrev_to_team_id
 
 state = {}
 

@@ -2,7 +2,7 @@ import pandas as pd
 import time
 from nba_api.stats.endpoints import teamgamelog
 from nba_api.stats.static import teams
-from backend.training_data.training_data_utils import *
+from training_data.training_data_utils import *
 
 def export_training_data():
     data_2024_25 = build_training_data(season = "2024-25") # previous season
