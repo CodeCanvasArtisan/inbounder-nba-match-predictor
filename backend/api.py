@@ -1,6 +1,6 @@
 import os
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from slowapi import Limiter, _rate_limit_exceeded_handler
 
@@ -53,18 +53,18 @@ limiter = Limiter(key_func=get_remote_address)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
-class PredictionRequest(BaseModel):
+class Predictionpayload(BaseModel):
     home_team_abbrev: str
     away_team_abbrev: str
     date: date
 
 @app.post("/prediction")
 @limiter.limit("30/minute;200/hour")
-def create_prediction(request : PredictionRequest):
+def create_prediction(request: Request, payload : Predictionpayload):
     try:
         # convert appreviation to team id
-        home_team_id = abbrev_to_team_id(request.home_team_abbrev)
-        away_team_id = abbrev_to_team_id(request.away_team_abbrev)
+        home_team_id = abbrev_to_team_id(payload.home_team_abbrev)
+        away_team_id = abbrev_to_team_id(payload.away_team_abbrev)
     except Exception as e:
         raise HTTPException(404, "Error getting ids -> ", e)
     
@@ -74,7 +74,7 @@ def create_prediction(request : PredictionRequest):
         away_game_log=state['game_logs'][away_team_id],
         home_team_id=home_team_id,
         away_team_id=away_team_id,
-        game_date=pd.Timestamp(str(request.date)),
+        game_date=pd.Timestamp(str(payload.date)),
         scaler=state['scaler'],
         model=state['model'],
         team_to_index=state['team_to_index']
