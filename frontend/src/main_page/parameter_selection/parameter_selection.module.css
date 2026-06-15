@@ -82,11 +82,12 @@ MATCHUP SELECTION --------------
     display: flex; justify-content: flex-start; align-items: center;
     gap : 20px;
     border : none; outline : none;
-    background : linear-gradient(#DDDDDD, #E6E6E6, to right);
+    background : linear-gradient(to right, #DDDDDD, #ffcbcb);
     border-radius : 20px;
     padding : 5px 10px;
 
     font-size: var(--font-size-xl);
+    font-weight : var(--font-weight-extrabold);
 
 }   
 .team_selection_container img {
@@ -179,3 +180,44 @@ GAME DATE SELECTION --------------
 }
 .selected:hover {cursor : pointer; background : none;}
 
+
+
+/* 
+--------------------------------
+MOBILE STYLES --------------
+*/
+@media (max-width: 768px) {
+    .parameter_pill_container { padding: 14px; }
+
+    .parameter_pill_container header {
+        font-size: var(--font-size-xl);
+        height: auto;
+        margin-bottom: 8px;
+    }
+
+    .step_circle { padding : 10px; font-size: var(--font-size-xl); }
+
+    .matchup_selection_container {overflow-x : scroll;}
+    /* Team cards: reduce text so both fit without clipping */
+    .team_selection_container {
+        font-size: var(--font-size-sm);
+        gap: 8px;
+        padding: 5px 8px;
+        min-height: 60px;
+        min-width : 150px;
+    }
+
+    /* Game date: 80px gap is the overflow culprit */
+    .game_date_selection_container {
+        gap: 18px;
+        padding: 12px 14px;
+    }
+
+    .game_date_selection_container h2 { font-size: var(--font-size-lg); }
+    .inxdays_wrapper img {
+        width : 1.5em;
+    }
+
+    .inxdays_wrapper { gap: 6px; }
+    .inxdays_wrapper input { font-size: var(--font-size-lg); }
+}

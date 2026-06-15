@@ -51,7 +51,7 @@ export function TeamSelectionArea({teamObj, isHome, onClick}) {
             {Logo ? <Logo size="3em" /> : <img src={basketballIcon} />}
             <p style = {{color : teamObj.secondaryColour}}>
                 {teamObj.fullName}
-                {teamObj.abbreviation && (
+                {(teamObj.abbreviation && window.innerWidth > 768) && (
                     ` (${teamObj.abbreviation})`
                 )}
             </p>

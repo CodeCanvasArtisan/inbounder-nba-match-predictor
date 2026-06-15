@@ -7,6 +7,8 @@
     border-radius : var(--radius-xl);
 
     padding : 10px;
+
+    gap : 15px;
 }
 
 .button_primary:hover {
@@ -18,7 +20,7 @@
 }
 
 .button_primary img {
-    height : 3cqi !important;
+    height : 2.5cqi !important;
 }
 
 /* Action link */
@@ -34,3 +36,18 @@
     border-radius : 10px;
 }
 .action_link:hover {cursor : pointer; backdrop-filter : brightness(0.8);}
+
+
+
+/* 
+--------------------------------
+MOBILE STYLES --------------
+*/
+@media (max-width: 768px) {
+    /* 44px font in a button = wraps to two lines on mobile */
+    .button_primary {
+        font-size: var(--font-size-xl);
+        height : fit-content;
+        min-height: 50px;
+    }
+}

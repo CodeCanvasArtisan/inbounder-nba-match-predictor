@@ -67,3 +67,42 @@ SECTION CONTAINERS --------------
     width : 40%;
     height : 10vh;
 }
+
+
+/* 
+--------------------------------
+MOBILE STYLES --------------
+*/
+
+@media (max-width: 768px) {
+    .page_container > * { width: 96%; }
+
+    .page_header {
+        max-width: 96%;     /* was 60% — this is the root cause of header clipping */
+        height: auto;
+        min-height: 25vh;
+        padding: 15px 0;
+        gap: 12px;
+    }
+
+    .main_heading {
+        flex-direction: column;   /* stack logo above title */
+        font-size: var(--font-size-2xl);
+        gap: 8px;
+        height: auto;
+    }
+
+    .main_heading > img { height: 60px; }
+
+    .subheading {
+        height: auto;
+        font-size: var(--font-size-base);
+    }
+
+    .parameters_section {
+        height: fit-content;
+        min-height: unset;
+    }
+
+    .submit_section { width: 90%; height: auto; }
+}
